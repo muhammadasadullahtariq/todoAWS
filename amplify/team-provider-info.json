@@ -1,0 +1,54 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-todotesting-staging-51245-authRole",
+      "UnauthRoleArn": "arn:aws:iam::072748911387:role/amplify-todotesting-staging-51245-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::072748911387:role/amplify-todotesting-staging-51245-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+      "UnauthRoleName": "amplify-todotesting-staging-51245-unauthRole",
+      "StackName": "amplify-todotesting-staging-51245",
+      "StackId": "arn:aws:cloudformation:us-east-1:072748911387:stack/amplify-todotesting-staging-51245/ac704bd0-4ab5-11ed-a851-0aa3d2c573f1",
+      "AmplifyAppId": "d2nudh8wwx7don",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-todotesting-staging-51245-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "function": {
+        "TestingDefineAuthChallenge": {
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/TestingDefineAuthChallenge-7667546e6e4d62656537-build.zip"
+        },
+        "TestingCreateAuthChallenge": {
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/TestingCreateAuthChallenge-2f4d59646f64436f5366-build.zip"
+        },
+        "TestingVerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "6LchI3kiAAAAAJwMEixLopxh4dwVVHoC4gn4ccOK",
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/TestingVerifyAuthChallengeResponse-6e794e41693143533370-build.zip"
+        },
+        "TestingCustomMessage": {
+          "REDIRECTURL": "https://todotesting8223146b-82 23146b/app/",
+          "EMAILSUBJECT": "verification email",
+          "EMAILMESSAGE": "follow this link",
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/TestingCustomMessage-3835676473505a384a4b-build.zip"
+        },
+        "testing": {
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/testing-2b664b7648676e633430-build.zip"
+        },
+        "asadkTaskFun": {
+          "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
+          "s3Key": "amplify-builds/asadkTaskFun-46642b6d423575673256-build.zip"
+        }
+      },
+      "auth": {
+        "todotesting86eadb8a": {}
+      },
+      "api": {
+        "todotesting": {}
+      }
+    }
+  }
+}
