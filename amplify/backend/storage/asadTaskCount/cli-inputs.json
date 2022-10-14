@@ -1,0 +1,12 @@
+{
+  "resourceName": "asadTaskCount",
+  "tableName": "asadTaskCount",
+  "partitionKey": {
+    "fieldName": "user",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "testing"
+  ]
+}

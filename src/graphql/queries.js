@@ -36,3 +36,32 @@ export const listAsadTaskManagers = /* GraphQL */ `
     }
   }
 `;
+export const getAsadTaskCount = /* GraphQL */ `
+  query GetAsadTaskCount($id: ID!) {
+    getAsadTaskCount(id: $id) {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAsadTaskCounts = /* GraphQL */ `
+  query ListAsadTaskCounts(
+    $filter: ModelAsadTaskCountFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAsadTaskCounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user
+        count
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

@@ -15,6 +15,18 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storageasadTaskCountName": {
+      "Type": "String",
+      "Default": "storageasadTaskCountName"
+    },
+    "storageasadTaskCountArn": {
+      "Type": "String",
+      "Default": "storageasadTaskCountArn"
+    },
+    "storageasadTaskCountStreamArn": {
+      "Type": "String",
+      "Default": "storageasadTaskCountArn"
     }
   },
   "Conditions": {
@@ -173,6 +185,59 @@
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "appsync.amazonaws.com"
+      }
+    },
+    "asadTaskCountTriggerPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "lambda-trigger-policy-asadTaskCount",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:ListStreams"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageasadTaskCountStreamArn"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "asadTaskCountTrigger": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "DependsOn": [
+        "asadTaskCountTriggerPolicy"
+      ],
+      "Properties": {
+        "BatchSize": 100,
+        "Enabled": true,
+        "EventSourceArn": {
+          "Ref": "storageasadTaskCountStreamArn"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaFunction",
+            "Arn"
+          ]
+        },
+        "StartingPosition": "LATEST"
       }
     }
   },

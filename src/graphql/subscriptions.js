@@ -37,3 +37,36 @@ export const onDeleteAsadTaskManager = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAsadTaskCount = /* GraphQL */ `
+  subscription OnCreateAsadTaskCount {
+    onCreateAsadTaskCount {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAsadTaskCount = /* GraphQL */ `
+  subscription OnUpdateAsadTaskCount {
+    onUpdateAsadTaskCount {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAsadTaskCount = /* GraphQL */ `
+  subscription OnDeleteAsadTaskCount {
+    onDeleteAsadTaskCount {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;

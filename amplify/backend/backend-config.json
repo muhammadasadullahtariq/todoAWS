@@ -69,7 +69,18 @@
     "testing": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "asadTaskCount",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
     },
     "asadkTaskFun": {
       "build": true,
@@ -80,12 +91,16 @@
           "category": "api",
           "resourceName": "todotesting",
           "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
+            "GraphQLAPIIdOutput"
           ]
         }
       ]
     }
   },
-  "storage": {}
+  "storage": {
+    "asadTaskCount": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  }
 }

@@ -1,5 +1,46 @@
 {
-  "key1": "value1",
-  "key2": "value2",
-  "key3": "value3"
+  "Records": [
+    {
+      "eventID": "ae1143688e71a7de0690a8b2cfe3d51a",
+      "eventName": "REMOVE",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1665743836,
+        "Keys": {
+          "id": {
+            "S": "6c8c0ecc-d87c-47fd-ace4-3b484e15f154"
+          }
+        },
+        "OldImage": {
+          "createdAt": {
+            "S": "2022-10-14T10:36:32.111Z"
+          },
+          "task": {
+            "S": "ggg"
+          },
+          "__typename": {
+            "S": "asadTaskManager"
+          },
+          "name": {
+            "S": "asad"
+          },
+          "id": {
+            "S": "6c8c0ecc-d87c-47fd-ace4-3b484e15f154"
+          },
+          "user": {
+            "S": "cb303805-a005-4e8b-849a-480af2bfd709"
+          },
+          "updatedAt": {
+            "S": "2022-10-14T10:36:32.111Z"
+          }
+        },
+        "SequenceNumber": "3907400000000014459488125",
+        "SizeBytes": 222,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:072748911387:table/asadTaskManager-hsasxic5ifhbzdmyyya7xioniy-staging/stream/2022-10-13T12:54:43.417"
+    }
+  ]
 }

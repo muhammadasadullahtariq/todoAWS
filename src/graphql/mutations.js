@@ -46,3 +46,45 @@ export const deleteAsadTaskManager = /* GraphQL */ `
     }
   }
 `;
+export const createAsadTaskCount = /* GraphQL */ `
+  mutation CreateAsadTaskCount(
+    $input: CreateAsadTaskCountInput!
+    $condition: ModelAsadTaskCountConditionInput
+  ) {
+    createAsadTaskCount(input: $input, condition: $condition) {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAsadTaskCount = /* GraphQL */ `
+  mutation UpdateAsadTaskCount(
+    $input: UpdateAsadTaskCountInput!
+    $condition: ModelAsadTaskCountConditionInput
+  ) {
+    updateAsadTaskCount(input: $input, condition: $condition) {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAsadTaskCount = /* GraphQL */ `
+  mutation DeleteAsadTaskCount(
+    $input: DeleteAsadTaskCountInput!
+    $condition: ModelAsadTaskCountConditionInput
+  ) {
+    deleteAsadTaskCount(input: $input, condition: $condition) {
+      id
+      user
+      count
+      createdAt
+      updatedAt
+    }
+  }
+`;

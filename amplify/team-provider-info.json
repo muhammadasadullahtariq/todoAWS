@@ -40,7 +40,7 @@
         },
         "asadkTaskFun": {
           "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
-          "s3Key": "amplify-builds/asadkTaskFun-46642b6d423575673256-build.zip"
+          "s3Key": "amplify-builds/asadkTaskFun-46634769575154447030-build.zip"
         }
       },
       "auth": {
@@ -48,6 +48,9 @@
       },
       "api": {
         "todotesting": {}
+      },
+      "storage": {
+        "asadTaskCount": {}
       }
     }
   }

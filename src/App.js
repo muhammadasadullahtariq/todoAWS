@@ -9,12 +9,14 @@ import {
 } from "./graphql/mutations";
 
 import { listAsadTaskManagers } from "./graphql/queries";
+import { onUpdateAsadTaskCount } from "./graphql/subscriptions";
 
 Amplify.configure(awsmobile);
 const App = () => {
   const [list, setList] = useState([]);
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
+  const [userDetails, setUserDetails] = useState({ name: "", count: 0 });
 
   useEffect(() => {
     console.log("user ID is", Auth.user.username);
@@ -30,6 +32,23 @@ const App = () => {
       );
       console.log(list);
       setList(list.data.listAsadTaskManagers.items);
+    })();
+
+    (async () => {
+      const subscription = API.graphql(
+        graphqlOperation(onUpdateAsadTaskCount, {
+          user: Auth.user.username,
+        })
+      ).subscribe({
+        next: (data) => {
+          console.log("data is", data);
+          setUserDetails({
+            name: data.value.data.onUpdateAsadTaskCount.user,
+            count: data.value.data.onUpdateAsadTaskCount.count,
+          });
+        },
+      });
+      return () => subscription.unsubscribe();
     })();
   }, []);
 
@@ -66,6 +85,12 @@ const App = () => {
 
   return (
     <div>
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <h3>{"User Name :\t" + userDetails.name + "\t"}</h3>
+        <h4>{"Count is :\t" + userDetails.count}</h4>
+      </div>
       <div
         style={{
           flexDirection: "row",
