@@ -23,7 +23,7 @@
           "s3Key": "amplify-builds/TestingCreateAuthChallenge-2f4d59646f64436f5366-build.zip"
         },
         "TestingVerifyAuthChallengeResponse": {
-          "RECAPTCHASECRET": "6LchI3kiAAAAAJwMEixLopxh4dwVVHoC4gn4ccOK",
+          "RECAPTCHASECRET": "***************",
           "deploymentBucketName": "amplify-todotesting-staging-51245-deployment",
           "s3Key": "amplify-builds/TestingVerifyAuthChallengeResponse-6e794e41693143533370-build.zip"
         },
