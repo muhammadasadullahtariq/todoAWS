@@ -36,7 +36,6 @@ export const getAsadCountTask = /* GraphQL */ `
   query GetAsadCountTask($id: ID!) {
     getAsadCountTask(id: $id) {
       count
-      user
       id
       createdAt
       updatedAt
@@ -52,7 +51,6 @@ export const listAsadCountTasks = /* GraphQL */ `
     listAsadCountTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         count
-        user
         id
         createdAt
         updatedAt

@@ -41,7 +41,6 @@ export const onCreateAsadCountTask = /* GraphQL */ `
   subscription OnCreateAsadCountTask {
     onCreateAsadCountTask {
       count
-      user
       id
       createdAt
       updatedAt
@@ -52,7 +51,6 @@ export const onUpdateAsadCountTask = /* GraphQL */ `
   subscription OnUpdateAsadCountTask {
     onUpdateAsadCountTask {
       count
-      user
       id
       createdAt
       updatedAt
@@ -63,7 +61,6 @@ export const onDeleteAsadCountTask = /* GraphQL */ `
   subscription OnDeleteAsadCountTask {
     onDeleteAsadCountTask {
       count
-      user
       id
       createdAt
       updatedAt

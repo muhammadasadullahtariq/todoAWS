@@ -18,16 +18,20 @@ const App = () => {
   useEffect(() => {
     console.log("user ID is", Auth.user.username);
     (async () => {
-      const list = await API.graphql(
-        graphqlOperation(listAsadTodos, {
-          filter: {
-            user: {
-              eq: Auth.user.username,
+      try {
+        var list = await API.graphql(
+          graphqlOperation(listAsadTodos, {
+            filter: {
+              user: {
+                eq: Auth.user.username,
+              },
             },
-          },
-        })
-      );
-      console.log(list);
+          })
+        );
+      } catch (error) {
+        console.log("error is", error);
+      }
+      console.log("list is ", list);
       setList(list.data.listAsadTodos.items);
     })();
 

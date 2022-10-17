@@ -1,3 +1,13 @@
 {
+  "permissions": {
+    "storage": {
+      "asadCountTask:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
   "lambdaLayers": []
 }

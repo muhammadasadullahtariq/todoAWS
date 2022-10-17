@@ -5,24 +5,24 @@
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
-
 const AWS = require("aws-sdk");
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-exports.handler = async (event) => {
-  console.log(`EVENT: ${JSON.stringify(event)}`);
+async function putTask(user, operation) {
+  console.log("user is", user);
+  console.log("operation is", operation);
+  console.log("table is ", process.env.API_ASADTODO_ASADCOUNTTASKTABLE_NAME);
   const params = {
     TableName: process.env.API_ASADTODO_ASADCOUNTTASKTABLE_NAME,
     Key: {
-      user,
+      id: user,
     },
     Item: {
-      user,
+      id: user,
     },
   };
   try {
@@ -46,11 +46,11 @@ exports.handler = async (event) => {
     console.log("error is", error);
     console.log(error);
   }
-};
+}
 
 exports.handler = async (event) => {
   const params = {
-    TableName: process.env.STORAGE_ASADTASKCOUNT_NAME,
+    TableName: process.env.API_ASADTODO_ASADCOUNTTASKTABLE_NAME,
     Key: {
       user: "asad",
       count: 0,
