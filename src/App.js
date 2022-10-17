@@ -6,7 +6,10 @@ import { API, graphqlOperation } from "aws-amplify";
 import { createAsadTodo, deleteAsadTodo } from "./graphql/mutations";
 
 import { listAsadTodos } from "./graphql/queries";
-// import { onUpdateAsadTaskCount } from "./graphql/subscriptions";
+import {
+  onUpdateAsadCountTask,
+  onCreateAsadCountTask,
+} from "./graphql/subscriptions";
 
 Amplify.configure(awsmobile);
 const App = () => {
@@ -34,24 +37,64 @@ const App = () => {
       console.log("list is ", list);
       setList(list.data.listAsadTodos.items);
     })();
-
-    // (async () => {
-    //   const subscription = API.graphql(
-    //     graphqlOperation(onUpdateAsadTaskCount, {
-    //       user: Auth.user.username,
-    //     })
-    //   ).subscribe({
-    //     next: (data) => {
-    //       console.log("data is", data);
-    //       setUserDetails({
-    //         name: data.value.data.onUpdateAsadTaskCount.user,
-    //         count: data.value.data.onUpdateAsadTaskCount.count,
-    //       });
-    //     },
-    //   });
-    //   return () => subscription.unsubscribe();
-    // })();
+    sunscribeToCountTask();
+    sunscribeToCreateTask();
   }, []);
+
+  const sunscribeToCountTask = async () => {
+    try {
+      const subscription = await API.graphql(
+        graphqlOperation(onUpdateAsadCountTask, {
+          filter: {
+            id: {
+              eq: Auth.user.username,
+            },
+          },
+        })
+      );
+      console.log("subscription is", subscription);
+      subscription.subscribe({
+        next: (eventData) => {
+          console.log("eventData is", eventData);
+          setUserDetails({
+            name: eventData.value.data.onUpdateAsadCountTask.user,
+            count: eventData.value.data.onUpdateAsadCountTask.count,
+          });
+        },
+        error: (error) => {
+          console.log("error is", error);
+        },
+      });
+    } catch (error) {
+      console.log("error is", error);
+    }
+  };
+
+  const sunscribeToCreateTask = async () => {
+    try {
+      const subscription = await API.graphql(
+        graphqlOperation(onCreateAsadCountTask, {
+          filter: {
+            id: {
+              eq: Auth.user.username,
+            },
+          },
+        })
+      );
+      console.log("subscription is", subscription);
+      subscription.subscribe({
+        next: (eventData) => {
+          console.log("eventData is", eventData);
+          setUserDetails({
+            name: eventData.value.data.onCreateAsadCountTask.user,
+            count: eventData.value.data.onCreateAsadCountTask.count,
+          });
+        },
+      });
+    } catch (error) {
+      console.log("error is", error);
+    }
+  };
 
   const addTask = async () => {
     try {

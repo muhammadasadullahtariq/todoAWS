@@ -20,7 +20,7 @@
       "function": {
         "asadTodoTesting": {
           "deploymentBucketName": "amplify-asadtodo-dev-102501-deployment",
-          "s3Key": "amplify-builds/asadTodoTesting-68753633396c3838426a-build.zip"
+          "s3Key": "amplify-builds/asadTodoTesting-3738446755324534774b-build.zip"
         }
       }
     }
