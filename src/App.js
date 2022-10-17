@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Amplify, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import { createAsadTodo, deleteAsadTodo } from "./graphql/mutations";
 
 import {
@@ -18,6 +18,8 @@ const App = () => {
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [count, setCount] = useState(0);
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -137,8 +139,22 @@ const App = () => {
     <div>
       <div style={{ alignItems: "center" }}>
         <h3>{"User Name :\t" + Auth.user.username}</h3>
-        <h4>{"Count is :\t" + count}</h4>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <h4>{"Count is :\t" + count}</h4>
+          <img
+            src={preview}
+            alt={image?.name}
+            style={{ widht: 100, height: 100 }}
+          />
+        </div>
       </div>
+      <input
+        type={"file"}
+        onChange={(e) => {
+          setImage(e.target.files[0]);
+          setPreview(URL.createObjectURL(e.target.files[0]));
+        }}
+      />
       <div
         style={{
           flexDirection: "row",

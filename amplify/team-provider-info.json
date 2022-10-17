@@ -21,7 +21,14 @@
         "asadTodoTesting": {
           "deploymentBucketName": "amplify-asadtodo-dev-102501-deployment",
           "s3Key": "amplify-builds/asadTodoTesting-3738446755324534774b-build.zip"
+        },
+        "S3Trigger28a3106b": {
+          "deploymentBucketName": "amplify-asadtodo-dev-102501-deployment",
+          "s3Key": "amplify-builds/S3Trigger28a3106b-445075444742712b5844-build.zip"
         }
+      },
+      "storage": {
+        "asadTodotestingBucket": {}
       }
     }
   }

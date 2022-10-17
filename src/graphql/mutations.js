@@ -54,6 +54,8 @@ export const createAsadCountTask = /* GraphQL */ `
     createAsadCountTask(input: $input, condition: $condition) {
       count
       id
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -65,6 +67,8 @@ export const updateAsadCountTask = /* GraphQL */ `
     updateAsadCountTask(input: $input, condition: $condition) {
       count
       id
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -76,6 +80,47 @@ export const deleteAsadCountTask = /* GraphQL */ `
     deleteAsadCountTask(input: $input, condition: $condition) {
       count
       id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAsadUserImage = /* GraphQL */ `
+  mutation CreateAsadUserImage(
+    $input: CreateAsadUserImageInput!
+    $condition: ModelAsadUserImageConditionInput
+  ) {
+    createAsadUserImage(input: $input, condition: $condition) {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAsadUserImage = /* GraphQL */ `
+  mutation UpdateAsadUserImage(
+    $input: UpdateAsadUserImageInput!
+    $condition: ModelAsadUserImageConditionInput
+  ) {
+    updateAsadUserImage(input: $input, condition: $condition) {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAsadUserImage = /* GraphQL */ `
+  mutation DeleteAsadUserImage(
+    $input: DeleteAsadUserImageInput!
+    $condition: ModelAsadUserImageConditionInput
+  ) {
+    deleteAsadUserImage(input: $input, condition: $condition) {
+      id
+      image
+      createdAt
+      updatedAt
     }
   }
 `;

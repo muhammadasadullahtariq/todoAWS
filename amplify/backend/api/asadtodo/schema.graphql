@@ -13,3 +13,8 @@ type asadTodo @model {
 type asadCountTask @model {
   count: Int
 }
+
+type asadUserImage @model {
+  id: ID!
+  image: String!
+}

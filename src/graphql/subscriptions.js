@@ -67,3 +67,33 @@ export const onDeleteAsadCountTask = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAsadUserImage = /* GraphQL */ `
+  subscription OnCreateAsadUserImage {
+    onCreateAsadUserImage {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAsadUserImage = /* GraphQL */ `
+  subscription OnUpdateAsadUserImage {
+    onUpdateAsadUserImage {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAsadUserImage = /* GraphQL */ `
+  subscription OnDeleteAsadUserImage {
+    onDeleteAsadUserImage {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;

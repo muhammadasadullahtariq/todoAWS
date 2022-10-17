@@ -37,6 +37,8 @@ export const getAsadCountTask = /* GraphQL */ `
     getAsadCountTask(id: $id) {
       count
       id
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -50,6 +52,35 @@ export const listAsadCountTasks = /* GraphQL */ `
       items {
         count
         id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAsadUserImage = /* GraphQL */ `
+  query GetAsadUserImage($id: ID!) {
+    getAsadUserImage(id: $id) {
+      id
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAsadUserImages = /* GraphQL */ `
+  query ListAsadUserImages(
+    $filter: ModelAsadUserImageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAsadUserImages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        image
+        createdAt
+        updatedAt
       }
       nextToken
     }

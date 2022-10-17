@@ -1,0 +1,14 @@
+{
+  "resourceName": "asadTodotestingBucket",
+  "policyUUID": "be425d0e",
+  "bucketName": "asadtodo6e26bed3790d4514a3761765dbaeb56d",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger28a3106b",
+  "groupAccess": {}
+}
