@@ -37,8 +37,6 @@ export const getAsadCountTask = /* GraphQL */ `
     getAsadCountTask(id: $id) {
       count
       id
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -52,8 +50,6 @@ export const listAsadCountTasks = /* GraphQL */ `
       items {
         count
         id
-        createdAt
-        updatedAt
       }
       nextToken
     }

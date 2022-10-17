@@ -5,21 +5,21 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createAsadTodo, deleteAsadTodo } from "./graphql/mutations";
 
-import { listAsadTodos } from "./graphql/queries";
 import {
-  onUpdateAsadCountTask,
-  onCreateAsadCountTask,
-} from "./graphql/subscriptions";
+  listAsadTodos,
+  getAsadCountTask,
+  listAsadCountTasks,
+} from "./graphql/queries";
+import { onDeleteAsadTodo, onCreateAsadTodo } from "./graphql/subscriptions";
 
 Amplify.configure(awsmobile);
 const App = () => {
   const [list, setList] = useState([]);
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
-  const [userDetails, setUserDetails] = useState({ name: "", count: 0 });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log("user ID is", Auth.user.username);
     (async () => {
       try {
         var list = await API.graphql(
@@ -37,29 +37,39 @@ const App = () => {
       console.log("list is ", list);
       setList(list.data.listAsadTodos.items);
     })();
-    sunscribeToCountTask();
+    getCount();
+    sunscribeToDeleteTask();
     sunscribeToCreateTask();
   }, []);
 
-  const sunscribeToCountTask = async () => {
+  const getCount = async () => {
     try {
-      const subscription = await API.graphql(
-        graphqlOperation(onUpdateAsadCountTask, {
+      var count = await API.graphql(
+        graphqlOperation(getAsadCountTask, {
+          id: Auth.user.username,
+        })
+      );
+    } catch (error) {
+      console.log("error is", error.errors[0].message);
+    }
+    console.log("count is ", count);
+    setCount(count.data.getAsadCountTask.count);
+  };
+
+  const sunscribeToDeleteTask = async () => {
+    try {
+      console.log("subscribing to count task" + Auth.user.username);
+      API.graphql(
+        graphqlOperation(onDeleteAsadTodo, {
           filter: {
-            id: {
+            user: {
               eq: Auth.user.username,
             },
           },
         })
-      );
-      console.log("subscription is", subscription);
-      subscription.subscribe({
+      ).subscribe({
         next: (eventData) => {
-          console.log("eventData is", eventData);
-          setUserDetails({
-            name: eventData.value.data.onUpdateAsadCountTask.user,
-            count: eventData.value.data.onUpdateAsadCountTask.count,
-          });
+          getCount();
         },
         error: (error) => {
           console.log("error is", error);
@@ -72,10 +82,10 @@ const App = () => {
 
   const sunscribeToCreateTask = async () => {
     try {
-      const subscription = await API.graphql(
-        graphqlOperation(onCreateAsadCountTask, {
+      const subscription = API.graphql(
+        graphqlOperation(onCreateAsadTodo, {
           filter: {
-            id: {
+            user: {
               eq: Auth.user.username,
             },
           },
@@ -84,11 +94,7 @@ const App = () => {
       console.log("subscription is", subscription);
       subscription.subscribe({
         next: (eventData) => {
-          console.log("eventData is", eventData);
-          setUserDetails({
-            name: eventData.value.data.onCreateAsadCountTask.user,
-            count: eventData.value.data.onCreateAsadCountTask.count,
-          });
+          getCount();
         },
       });
     } catch (error) {
@@ -129,11 +135,9 @@ const App = () => {
 
   return (
     <div>
-      <div
-        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-      >
-        <h3>{"User Name :\t" + userDetails.name + "\t"}</h3>
-        <h4>{"Count is :\t" + userDetails.count}</h4>
+      <div style={{ alignItems: "center" }}>
+        <h3>{"User Name :\t" + Auth.user.username}</h3>
+        <h4>{"Count is :\t" + count}</h4>
       </div>
       <div
         style={{

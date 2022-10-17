@@ -54,8 +54,6 @@ export const createAsadCountTask = /* GraphQL */ `
     createAsadCountTask(input: $input, condition: $condition) {
       count
       id
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -67,8 +65,6 @@ export const updateAsadCountTask = /* GraphQL */ `
     updateAsadCountTask(input: $input, condition: $condition) {
       count
       id
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -80,8 +76,6 @@ export const deleteAsadCountTask = /* GraphQL */ `
     deleteAsadCountTask(input: $input, condition: $condition) {
       count
       id
-      createdAt
-      updatedAt
     }
   }
 `;
