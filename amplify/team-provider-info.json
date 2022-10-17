@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-asadtodo-dev-102501-authRole",
+      "UnauthRoleArn": "arn:aws:iam::072748911387:role/amplify-asadtodo-dev-102501-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::072748911387:role/amplify-asadtodo-dev-102501-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-asadtodo-dev-102501-deployment",
+      "UnauthRoleName": "amplify-asadtodo-dev-102501-unauthRole",
+      "StackName": "amplify-asadtodo-dev-102501",
+      "StackId": "arn:aws:cloudformation:us-east-1:072748911387:stack/amplify-asadtodo-dev-102501/1100ea90-4ddc-11ed-8379-0a223df9116b"
+    },
+    "categories": {
+      "auth": {
+        "asadtodo1f00f425": {}
+      },
+      "api": {
+        "asadtodo": {}
+      },
+      "function": {
+        "asadTodoTesting": {}
+      }
+    }
+  }
+}

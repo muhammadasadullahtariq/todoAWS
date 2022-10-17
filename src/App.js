@@ -3,13 +3,10 @@ import { Amplify, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { API, graphqlOperation } from "aws-amplify";
-import {
-  createAsadTaskManager,
-  deleteAsadTaskManager,
-} from "./graphql/mutations";
+import { createAsadTodo, deleteAsadTodo } from "./graphql/mutations";
 
-import { listAsadTaskManagers } from "./graphql/queries";
-import { onUpdateAsadTaskCount } from "./graphql/subscriptions";
+import { listAsadTodos } from "./graphql/queries";
+// import { onUpdateAsadTaskCount } from "./graphql/subscriptions";
 
 Amplify.configure(awsmobile);
 const App = () => {
@@ -22,7 +19,7 @@ const App = () => {
     console.log("user ID is", Auth.user.username);
     (async () => {
       const list = await API.graphql(
-        graphqlOperation(listAsadTaskManagers, {
+        graphqlOperation(listAsadTodos, {
           filter: {
             user: {
               eq: Auth.user.username,
@@ -31,25 +28,25 @@ const App = () => {
         })
       );
       console.log(list);
-      setList(list.data.listAsadTaskManagers.items);
+      setList(list.data.listAsadTodos.items);
     })();
 
-    (async () => {
-      const subscription = API.graphql(
-        graphqlOperation(onUpdateAsadTaskCount, {
-          user: Auth.user.username,
-        })
-      ).subscribe({
-        next: (data) => {
-          console.log("data is", data);
-          setUserDetails({
-            name: data.value.data.onUpdateAsadTaskCount.user,
-            count: data.value.data.onUpdateAsadTaskCount.count,
-          });
-        },
-      });
-      return () => subscription.unsubscribe();
-    })();
+    // (async () => {
+    //   const subscription = API.graphql(
+    //     graphqlOperation(onUpdateAsadTaskCount, {
+    //       user: Auth.user.username,
+    //     })
+    //   ).subscribe({
+    //     next: (data) => {
+    //       console.log("data is", data);
+    //       setUserDetails({
+    //         name: data.value.data.onUpdateAsadTaskCount.user,
+    //         count: data.value.data.onUpdateAsadTaskCount.count,
+    //       });
+    //     },
+    //   });
+    //   return () => subscription.unsubscribe();
+    // })();
   }, []);
 
   const addTask = async () => {
@@ -62,10 +59,10 @@ const App = () => {
       setName("");
       setTask("");
       const result = await API.graphql(
-        graphqlOperation(createAsadTaskManager, { input: taskObj })
+        graphqlOperation(createAsadTodo, { input: taskObj })
       );
       console.log(result);
-      setList([...list, result.data.createAsadTaskManager]);
+      setList([...list, result.data.createAsadTodo]);
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +71,7 @@ const App = () => {
   const deleteTask = async (id) => {
     try {
       const result = await API.graphql(
-        graphqlOperation(deleteAsadTaskManager, { input: { id } })
+        graphqlOperation(deleteAsadTodo, { input: { id } })
       );
       console.log(result);
       setList(list.filter((task) => task.id !== id));
