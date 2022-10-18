@@ -1,5 +1,38 @@
 {
-  "key1": "value1",
-  "key2": "value2",
-  "key3": "value3"
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2022-10-18T05:16:53.294Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AROARB4BMJMNVN5OCSD5W:CognitoIdentityCredentials"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "119.63.139.52"
+      },
+      "responseElements": {
+        "x-amz-request-id": "BW3XBR7SMNEF69HF",
+        "x-amz-id-2": "uXZUBClbSC/hTY6h/a04ayaqVIcnzhOn6w65wbSjz0Yg+I3h9DxtGTgIMGxvdHbggUJguz+XZADGmZW5Myv9Lzb2bvhfyBkQ"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "c5e6e372-878a-4724-9f4e-227666694128",
+        "bucket": {
+          "name": "asadtodo6e26bed3790d4514a3761765dbaeb56d102501-dev",
+          "ownerIdentity": {
+            "principalId": "A2HQJWKGD68RUO"
+          },
+          "arn": "arn:aws:s3:::asadtodo6e26bed3790d4514a3761765dbaeb56d102501-dev"
+        },
+        "object": {
+          "key": "public/8c9f1d99-5aba-4495-bc09-d3a8babf1e39",
+          "size": 123774,
+          "eTag": "e8f23aed6bcf411d4647253d5513e5b3",
+          "sequencer": "00634E36C540FDE0D1"
+        }
+      }
+    }
+  ]
 }

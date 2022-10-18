@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "storage": {
+      "asadUserImage:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
+}

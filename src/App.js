@@ -152,6 +152,13 @@ const App = () => {
         type={"file"}
         onChange={(e) => {
           setImage(e.target.files[0]);
+          try {
+            Storage.put(Auth.user.username, e.target.files[0], {
+              contentType: e.target.files[0].type,
+            });
+          } catch (error) {
+            console.log("error is", error);
+          }
           setPreview(URL.createObjectURL(e.target.files[0]));
         }}
       />
